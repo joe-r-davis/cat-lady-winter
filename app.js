@@ -9,11 +9,11 @@ function Cat(name, age, img) {
     this.img = img
 }
 
-function getHappiness(cat){
-    if(cat.pets <= 3){
+function getHappiness(cat) {
+    if (cat.pets <= 3) {
         return cat.happiness[0]
     }
-    if(cat.pets == 4){
+    if (cat.pets == 4) {
         return cat.happiness[1]
     }
     return cat.happiness[2]
@@ -26,7 +26,7 @@ var cat4 = new Cat("Grumpy", 100, "http://i0.kym-cdn.com/entries/icons/mobile/00
 
 cats.push(cat1, cat2, cat3, cat4)
 
-function draw(arr){
+function draw(arr) {
     var template = ''
     var catElem = document.getElementById("cat-card")
     for (let i = 0; i < arr.length; i++) {
@@ -41,6 +41,7 @@ function draw(arr){
             <h3>Happiness:</h3>
             <p>${getHappiness(cat)}</p>
             <button onclick="petMe(${i})">Pet Me!</button>
+            <button onclick="resetMe(${i})">Catnip!</button>
         </div>
         `
     }
@@ -48,10 +49,20 @@ function draw(arr){
 }
 
 // Helper function
-function petMe(index){
+function petMe(index) {
     var cat = cats[index]
     cat.pets++
     draw(cats)
 }
+
+function resetMe(index){
+    var cat = cats[index]
+    cat.pets = 0
+    draw(cats)
+}
+
+
+
+
 
 draw(cats)
